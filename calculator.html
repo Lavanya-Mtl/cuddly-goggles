@@ -5,16 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
+    <script src="calculator.js"></script>
     <style>
+        
         body {
-            background-color: rgba(12, 22, 44, 0.523);
+            /*background-color: rgba(12, 22, 44, 0.523);
             background-image: url('./neonpurple.jpeg');
-            background-position: bottom;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: fixed;*/
+            background: url('./neonpurple.jpeg') no-repeat center fixed;
             background-size: cover;
         }
         #calbody {
             /*background-color: rgba(60, 88, 160, 0.357);*/
-            background-color: rgb(16, 19, 26);
+            background-color: rgba(16, 19, 26, 0.7);
             border-radius: 6px;
             box-shadow: rgba(45, 35, 66, .4) 0 2px 4px,rgba(45, 35, 66, .3) 0 7px 13px -3px,rgba(58, 65, 111, .5) 0 -3px 0 inset;
             color:#fff;
@@ -22,103 +28,110 @@
             font-size: 20px;
             display: grid;
             padding: 20px;
-            margin: 20%;
+            height: 80vh;
+            width:80vw;
+            margin-top: 10vh;
+            margin: auto;
             text-align: center;
-            grid-template-rows: 1fr 1fr 5fr;
-            
+            grid-template-rows: 1fr 1fr 5fr;  
         }
+
         #caltext {
             background-color: rgb(16, 19, 26);
             border-radius: 6px;
             box-shadow: rgba(45, 35, 66, .4) 0 2px 4px,rgba(45, 35, 66, .3) 0 7px 13px -3px,rgba(58, 65, 111, .5) 0 -3px 0 inset;
             color:#fff;
             font-family: "JetBrains Mono",monospace;
-            font-size: 20px;
-  text-align: right;
-            
+            font-size: 3vh;
+            text-align: right;
         }
+
         #buttons {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr 1fr;  
         }
+
         button {
-            margin: 5px;
+            margin: 7px;
             /*padding: 10px;
             height: 30px;
             background-color: rgba(60, 88, 160, 0.357);*/
         
-  align-items: center;
-  appearance: none;
-  background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);
-  border: 0;
-  border-radius: 6px;
-  box-shadow: rgba(45, 35, 66, .4) 0 2px 4px,rgba(45, 35, 66, .3) 0 7px 13px -3px,rgba(58, 65, 111, .5) 0 -3px 0 inset;
-  box-sizing: border-box;
-  color: #fff;
-  cursor: pointer;
-  display: inline-flex;
-  font-family: "JetBrains Mono",monospace;
-  height: 48px;
-  justify-content: center;
-  line-height: 1;
-  list-style: none;
-  overflow: hidden;
-  padding-left: 16px;
-  padding-right: 16px;
-  position: relative;
-  text-align: left;
-  text-decoration: none;
-  transition: box-shadow .15s,transform .15s;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  white-space: nowrap;
-  will-change: box-shadow,transform;
-  font-size: 18px;
-}
+            align-items: center;
+            appearance: none;
+            background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);
+            border: 0;
+            border-radius: 6px;
+            box-shadow: rgba(45, 35, 66, .4) 0 2px 4px,rgba(45, 35, 66, .3) 0 7px 13px -3px,rgba(58, 65, 111, .5) 0 -3px 0 inset;
+            box-sizing: border-box;
+            color: #fff;
+            cursor: pointer;
+            display: inline-flex;
+            font-family: "JetBrains Mono",monospace;
+            /*height: 48px;*/
+            height: 8vh;
+            justify-content: center;
+            line-height: 1;
+            list-style: none;
+            overflow: hidden;
+            /*padding-left: 16px;
+            padding-right: 16px;*/
+            position: relative;
+            text-align: left;
+            text-decoration: none;
+            transition: box-shadow .15s,transform .15s;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            white-space: nowrap;
+            will-change: box-shadow,transform;
+            font-size: 4vh;
+        }
 
-button:focus {
-  box-shadow: #3c4fe0 0 0 0 1.5px inset, rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
-}
+        button:focus {
+        box-shadow: #3c4fe0 0 0 0 1.5px inset, rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+        }
 
-button:hover {
-  box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
-  transform: translateY(-2px);
-}
+        button:hover {
+        box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+        transform: translateY(-2px);
+        }
 
-button:active {
-  box-shadow: #3c4fe0 0 3px 7px inset;
-  transform: translateY(2px);
-}
+        button:active {
+        box-shadow: #3c4fe0 0 3px 7px inset;
+        transform: translateY(2px);
+        }
     </style>
 </head>
 <body>
+    
     <div id="calbody">
         <div>Calculator</div>
         <input type="text" name="" id="caltext">
     
         <div id="buttons">
-            <button>AC</button>
-            <button></button>
-            <button>/</button>
-            <button>%</button>
-            <button>9</button>
-            <button>8</button>
-            <button>7</button>
-            <button>/</button>
-            <button>6</button>
-            <button>5</button>
-            <button>4</button>
-            <button>x</button>
-            <button>3</button>
-            <button>2</button>
-            <button>1</button>
-            <button>+</button>
-            <button>.</button>
-            <button>0</button>
-            <button>=</button>
-            <button>-</button>
+            <button data-btnchar="AC">AC</button>
+            <button data-btnchar="del">del</button>
+            <button data-btnchar="sq" >sqrt</button>
+            <button data-btnchar="%" >%</button>
+            <button data-btnchar="9">9</button>
+            <button data-btnchar="8">8</button>
+            <button data-btnchar="7">7</button>
+            <button data-btnchar="/">/</button>
+            <button data-btnchar="6">6</button>
+            <button data-btnchar="5">5</button>
+            <button data-btnchar="4">4</button>
+            <button data-btnchar="x">x</button>
+            <button data-btnchar="3">3</button>
+            <button data-btnchar="2">2</button>
+            <button data-btnchar="1">1</button>
+            <button data-btnchar="+">+</button>
+            <button data-btnchar=".">.</button>
+            <button data-btnchar="0">0</button>
+            <button data-btnchar="=">=</button>
+            <button data-btnchar="-">-</button>
         </div>
     </div>
+   
 </body>
 </html>
